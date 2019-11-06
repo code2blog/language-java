@@ -1,0 +1,14 @@
+i will use tags to identify a unit of work
+
+project: jsp-hello-world
+	t-1 will by used to identify my first task where hello world has to be displayed on webpage using jsp
+
+	reference: https://www.tutorialspoint.com
+
+project: jsp-map-dropdown
+
+	jmd-t1 display two select dropdown list
+
+	task list for this project is only one at this point of time. 
+	When task list increases to a large number, the use of task list / task tags like this helps to group together a bunch of related commit messages.
+
