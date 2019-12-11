@@ -12,3 +12,6 @@ project: jsp-map-dropdown
 	task list for this project is only one at this point of time. 
 	When task list increases to a large number, the use of task list / task tags like this helps to group together a bunch of related commit messages.
 
+project: drools-demo
+	
+	dd-t1 use drinking game to explain the concepts of drools
