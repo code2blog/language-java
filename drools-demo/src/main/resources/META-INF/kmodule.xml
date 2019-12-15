@@ -5,4 +5,7 @@
         <ksession name="DrinkBeerKS"/>
     </kbase>
 
+    <kbase name="SudokuKB" packages="org.drools.examples.sudoku">
+        <ksession name="SudokuKS"/>
+    </kbase>
 </kmodule>
