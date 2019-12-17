@@ -71,8 +71,6 @@ public class Sudoku {
 
     public void step() {
         if (this.isSolved()) return;
-        // dumpGrid();
-
         explain = true;
         session.setGlobal("explain", explain);
         this.counter.setCount(1);
@@ -84,7 +82,7 @@ public class Sudoku {
         if( stepping.isEmergency() ){
             this.unsolvable = true;
         }
-        dumpGrid();
+        //dumpGrid();
     }
 
     public boolean isSolved() {
@@ -133,7 +131,7 @@ public class Sudoku {
     /**
      * Nice printout of the grid.
      */
-    public void dumpGrid() {
+    public String dumpGrid() {
         StringBuilder dumpGridSb = new StringBuilder();
         Formatter fmt = new Formatter(dumpGridSb);
         fmt.format("       ");
@@ -162,7 +160,8 @@ public class Sudoku {
             fmt.format("\n");
         }
         fmt.close();
-        System.out.println(dumpGridSb);
+        // System.out.println(dumpGridSb);
+        return dumpGridSb.toString();
     }
 
 

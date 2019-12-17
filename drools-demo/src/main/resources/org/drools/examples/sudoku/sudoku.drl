@@ -10,6 +10,16 @@ then
     drools.halt();
 end
 
+rule "emergency halt"
+salience -100
+when
+    $s: Stepping()
+then
+    modify( $s ){ setEmergency( true ) }
+    System.out.println("emergency halt");
+    drools.halt();
+end
+
 // A Setting object is inserted to define the value of a Cell.
 // Rule "set a value" updates the cell and all cell groups containing it.
 rule "set a value"
@@ -26,12 +36,13 @@ when
 then
     // modify the Cell by setting its value
     modify( $c ){ setValue( $v ) }
-    System.out.println( "set cell " + $c.toString() );
+    // System.out.println( "set cell " + $c.toString() );
     modify( $cr ){ blockValue( $v ) }
     modify( $cc ){ blockValue( $v ) }
     modify( $cs ){ blockValue( $v ) }
     modify( $ctr ){ setCount( $count - 1 ) }
 end
+
 
 // Rule for removing a value from all cells that are siblings
 // in one of the three cell groups.
@@ -46,7 +57,48 @@ when
     // for all Cells that are in cahoots with the updated cell
     $c: Cell( free contains $v ) from $exCells
 then
-    System.out.println( "clear " + $v + " from cell " + $c.posAsString()  );
+    // System.out.println( "clear " + $v + " from cell " + $c.posAsString()  );
     // modify a related Cell by blocking the assigned value
     modify( $c ){ blockValue( $v ) }
 end
+
+
+// Rule for elimination the Setting fact.
+rule "retract setting"
+when
+    // a Setting with row and column number, and a value
+    $s: Setting( $rn: rowNo, $cn: colNo, $v: value )
+
+    // the matching Cell, with the value already set
+    $c: Cell( rowNo == $rn, colNo == $cn, value == $v )
+
+    // This is the negation of the last pattern in the previous rule.
+    // Now the Setting fact can be safely retracted.
+    not( $x: Cell( free contains $v )
+         and
+         Cell( this == $c, exCells contains $x ) )
+then
+     System.out.println( "done setting cell " + $c.toString() );
+    // Discard the Setter fact.
+    delete( $s );
+//////    Sudoku.sudoku.consistencyCheck();
+end
+
+
+// Detect a set of candidate values with cardinality 1 for some Cell.
+// This is the value to be set.
+rule "single"
+when
+    // There is currently no setting under way.
+    not Setting()
+
+    // One element in the "free" set.
+    $c: Cell( $rn: rowNo, $cn: colNo, freeCount == 1 )
+then
+    Integer i = $c.getFreeValue();
+    if (explain) System.out.println( "single " + i + " at " + $c.posAsString() );
+    // Insert another Setter fact.
+    insert( new Setting( $rn, $cn, i ) );
+end
+
+

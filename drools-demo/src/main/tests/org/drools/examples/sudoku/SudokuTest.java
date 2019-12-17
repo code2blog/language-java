@@ -35,11 +35,19 @@ public class SudokuTest {
         Integer[][] sample = SudokuGridSamples.getInstance().getSample("Simple");
         sudoku.setCellValues(sample);
         //sudoku.validate();
-
-        logger.info("step()");
-        sudoku.step();
-        logger.info("step()");
-        sudoku.step();
+        String grid = "";
+        int maxAttempts = 300;
+        while(maxAttempts-- > 0){
+            logger.info("step()");
+            sudoku.step();
+            String currentGrid = sudoku.dumpGrid();
+            if(grid.equalsIgnoreCase(currentGrid)){
+                logger.info("no change in grid after step " + maxAttempts);
+                break;
+            }
+            grid = currentGrid;
+        }
+        System.out.println(grid);
         logger.info("end");
     }
 }

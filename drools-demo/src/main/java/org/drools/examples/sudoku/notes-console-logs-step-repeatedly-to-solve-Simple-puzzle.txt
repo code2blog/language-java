@@ -1,0 +1,230 @@
+drools.halt()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+done setting cell [0,1]: 5
+done setting cell [0,2]: 6
+done setting cell [0,3]: 8
+done setting cell [0,5]: 1
+done setting cell [0,6]: 9
+done setting cell [0,7]: 4
+done setting cell [1,0]: 9
+done setting cell [1,3]: 6
+done setting cell [1,5]: 5
+done setting cell [1,8]: 3
+done setting cell [2,0]: 7
+done setting cell [2,3]: 4
+done setting cell [2,4]: 9
+done setting cell [2,5]: 3
+done setting cell [2,8]: 8
+done setting cell [3,0]: 8
+done setting cell [3,1]: 9
+done setting cell [3,2]: 7
+done setting cell [3,4]: 4
+done setting cell [3,6]: 6
+done setting cell [3,7]: 3
+done setting cell [3,8]: 5
+done setting cell [4,2]: 3
+done setting cell [4,3]: 9
+done setting cell [4,5]: 6
+done setting cell [4,6]: 8
+done setting cell [5,0]: 4
+done setting cell [5,1]: 6
+done setting cell [5,2]: 5
+done setting cell [5,4]: 8
+done setting cell [5,6]: 2
+done setting cell [5,7]: 9
+done setting cell [5,8]: 1
+done setting cell [6,0]: 5
+done setting cell [6,3]: 2
+done setting cell [6,4]: 6
+done setting cell [6,5]: 9
+done setting cell [6,8]: 7
+done setting cell [7,0]: 6
+done setting cell [7,3]: 5
+done setting cell [7,5]: 4
+done setting cell [7,8]: 9
+done setting cell [8,1]: 4
+done setting cell [8,2]: 9
+done setting cell [8,3]: 7
+done setting cell [8,5]: 8
+done setting cell [8,6]: 3
+done setting cell [8,7]: 5
+single 1 at [8,4]
+drools.halt()
+done setting cell [8,4]: 1
+single 3 at [5,3]
+drools.halt()
+done setting cell [5,3]: 3
+single 1 at [7,6]
+drools.halt()
+done setting cell [7,6]: 1
+single 4 at [4,8]
+drools.halt()
+done setting cell [4,8]: 4
+single 1 at [3,3]
+drools.halt()
+done setting cell [3,3]: 1
+single 7 at [5,5]
+drools.halt()
+done setting cell [5,5]: 7
+single 7 at [4,7]
+drools.halt()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:08 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+done setting cell [4,7]: 7
+single 2 at [3,5]
+drools.halt()
+done setting cell [3,5]: 2
+single 2 at [0,8]
+drools.halt()
+done setting cell [0,8]: 2
+single 2 at [8,0]
+drools.halt()
+done setting cell [8,0]: 2
+single 3 at [7,4]
+drools.halt()
+done setting cell [7,4]: 3
+single 4 at [6,6]
+drools.halt()
+done setting cell [6,6]: 4
+single 7 at [1,6]
+drools.halt()
+done setting cell [1,6]: 7
+single 5 at [2,6]
+drools.halt()
+done setting cell [2,6]: 5
+single 8 at [6,7]
+drools.halt()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+done setting cell [6,7]: 8
+single 5 at [4,4]
+drools.halt()
+done setting cell [4,4]: 5
+single 7 at [0,4]
+drools.halt()
+done setting cell [0,4]: 7
+single 3 at [0,0]
+drools.halt()
+done setting cell [0,0]: 3
+single 6 at [8,8]
+drools.halt()
+done setting cell [8,8]: 6
+single 1 at [1,7]
+drools.halt()
+done setting cell [1,7]: 1
+single 1 at [4,0]
+drools.halt()
+done setting cell [4,0]: 1
+single 8 at [7,2]
+drools.halt()
+done setting cell [7,2]: 8
+single 2 at [1,4]
+drools.halt()
+done setting cell [1,4]: 2
+single 1 at [6,2]
+drools.halt()
+done setting cell [6,2]: 1
+single 2 at [7,7]
+drools.halt()
+done setting cell [7,7]: 2
+single 6 at [2,7]
+drools.halt()
+done setting cell [2,7]: 6
+single 2 at [4,1]
+drools.halt()
+done setting cell [4,1]: 2
+single 7 at [7,1]
+drools.halt()
+done setting cell [7,1]: 7
+single 4 at [1,2]
+drools.halt()
+done setting cell [1,2]: 4
+single 8 at [1,1]
+drools.halt()
+done setting cell [1,1]: 8
+single 2 at [2,2]
+drools.halt()
+done setting cell [2,2]: 2
+single 3 at [6,1]
+drools.halt()
+done setting cell [6,1]: 3
+single 1 at [2,1]
+drools.halt()
+       Col: 0     Col: 1     Col: 2     Col: 3     Col: 4     Col: 5     Col: 6     Col: 7     Col: 8     
+Row 0:  --- 3 ---  --- 5 ---  --- 6 ---  --- 8 ---  --- 7 ---  --- 1 ---  --- 9 ---  --- 4 ---  --- 2 --- 
+Row 1:  --- 9 ---  --- 8 ---  --- 4 ---  --- 6 ---  --- 2 ---  --- 5 ---  --- 7 ---  --- 1 ---  --- 3 --- 
+Row 2:  --- 7 ---  --- 1 ---  --- 2 ---  --- 4 ---  --- 9 ---  --- 3 ---  --- 5 ---  --- 6 ---  --- 8 --- 
+Row 3:  --- 8 ---  --- 9 ---  --- 7 ---  --- 1 ---  --- 4 ---  --- 2 ---  --- 6 ---  --- 3 ---  --- 5 --- 
+Row 4:  --- 1 ---  --- 2 ---  --- 3 ---  --- 9 ---  --- 5 ---  --- 6 ---  --- 8 ---  --- 7 ---  --- 4 --- 
+Row 5:  --- 4 ---  --- 6 ---  --- 5 ---  --- 3 ---  --- 8 ---  --- 7 ---  --- 2 ---  --- 9 ---  --- 1 --- 
+Row 6:  --- 5 ---  --- 3 ---  --- 1 ---  --- 2 ---  --- 6 ---  --- 9 ---  --- 4 ---  --- 8 ---  --- 7 --- 
+Row 7:  --- 6 ---  --- 7 ---  --- 8 ---  --- 5 ---  --- 3 ---  --- 4 ---  --- 1 ---  --- 2 ---  --- 9 --- 
+Row 8:  --- 2 ---  --- 4 ---  --- 9 ---  --- 7 ---  --- 1 ---  --- 8 ---  --- 3 ---  --- 5 ---  --- 6 --- 
+
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: step()
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: no change in grid after step 266
+Dec 17, 2019 9:05:09 PM org.drools.examples.sudoku.SudokuTest should_invoke_step_without_validate
+INFO: end
