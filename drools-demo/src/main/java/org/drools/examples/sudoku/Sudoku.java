@@ -71,7 +71,7 @@ public class Sudoku {
 
     public void step() {
         if (this.isSolved()) return;
-        dumpGrid();
+        // dumpGrid();
 
         explain = true;
         session.setGlobal("explain", explain);

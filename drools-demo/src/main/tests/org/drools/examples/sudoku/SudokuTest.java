@@ -28,39 +28,18 @@ public class SudokuTest {
     }
 
     @Test
-    public void should_invoke_validate_as_blocking_call() {
-        this.kc = KieServices.Factory.get().getKieClasspathContainer();
-        sudoku = new Sudoku(kc);
-        //
-        Integer[][] sample = SudokuGridSamples.getInstance().getSample("Simple");
-        sudoku.setCellValues(sample);
-
-        executor.execute(new Runnable(){
-            public void run(){
-                try {
-                    Thread.sleep(1000 * 1);
-                    logger.info("step()");
-                    sudoku.step();
-                }catch(Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        sudoku.validate();
-        logger.info("end");
-    }
-
-
-    @Test
     public void should_invoke_step_without_validate() throws Exception {
         this.kc = KieServices.Factory.get().getKieClasspathContainer();
         sudoku = new Sudoku(kc);
         //
         Integer[][] sample = SudokuGridSamples.getInstance().getSample("Simple");
         sudoku.setCellValues(sample);
-        Thread.sleep(1000);
+        //sudoku.validate();
+
         logger.info("step()");
+        sudoku.step();
+        logger.info("step()");
+        sudoku.step();
         logger.info("end");
     }
 }
