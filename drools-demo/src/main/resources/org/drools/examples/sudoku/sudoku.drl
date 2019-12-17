@@ -32,3 +32,21 @@ then
     modify( $cs ){ blockValue( $v ) }
     modify( $ctr ){ setCount( $count - 1 ) }
 end
+
+// Rule for removing a value from all cells that are siblings
+// in one of the three cell groups.
+rule "eliminate a value from Cell"
+when
+    // a Setting with row and column number, and a value
+    $s: Setting( $rn: rowNo, $cn: colNo, $v: value )
+
+    // the matching Cell, with the value already set
+    Cell( rowNo == $rn, colNo == $cn, value == $v, $exCells: exCells )
+
+    // for all Cells that are in cahoots with the updated cell
+    $c: Cell( free contains $v ) from $exCells
+then
+    System.out.println( "clear " + $v + " from cell " + $c.posAsString()  );
+    // modify a related Cell by blocking the assigned value
+    modify( $c ){ blockValue( $v ) }
+end
