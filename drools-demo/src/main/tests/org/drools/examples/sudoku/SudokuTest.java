@@ -5,20 +5,62 @@ import org.junit.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
-import org.kie.api.runtime.rule.FactHandle;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.logging.Logger;
+
 
 public class SudokuTest {
     private Sudoku sudoku;
     private KieSession session;
     private KieContainer kc;
+    ExecutorService executor = Executors.newCachedThreadPool();
+    Logger logger = Logger.getLogger(SudokuTest.class.getName());
 
     @Test
-    public void should_load_kie_session(){
+    public void should_load_kie_session() {
         this.kc = KieServices.Factory.get().getKieClasspathContainer();
-        sudoku = new Sudoku( kc );
+        sudoku = new Sudoku(kc);
         //
         Integer[][] sample = SudokuGridSamples.getInstance().getSample("Simple");
         sudoku.setCellValues(sample);
+    }
+
+    @Test
+    public void should_invoke_validate_as_blocking_call() {
+        this.kc = KieServices.Factory.get().getKieClasspathContainer();
+        sudoku = new Sudoku(kc);
+        //
+        Integer[][] sample = SudokuGridSamples.getInstance().getSample("Simple");
+        sudoku.setCellValues(sample);
+
+        executor.execute(new Runnable(){
+            public void run(){
+                try {
+                    Thread.sleep(1000 * 1);
+                    logger.info("step()");
+                    sudoku.step();
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
         sudoku.validate();
+        logger.info("end");
+    }
+
+
+    @Test
+    public void should_invoke_step_without_validate() throws Exception {
+        this.kc = KieServices.Factory.get().getKieClasspathContainer();
+        sudoku = new Sudoku(kc);
+        //
+        Integer[][] sample = SudokuGridSamples.getInstance().getSample("Simple");
+        sudoku.setCellValues(sample);
+        Thread.sleep(1000);
+        logger.info("step()");
+        logger.info("end");
     }
 }

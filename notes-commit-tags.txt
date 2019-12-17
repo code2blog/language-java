@@ -17,4 +17,4 @@ project: drools-demo
 	dd-t1 use drinking game to explain the concepts of drools
 	dd-t2 create sudoku frame using swing 
 	dd-t3 execute drools rules as unit tests
-	
+	dd-t4 step command to change one cell value
