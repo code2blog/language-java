@@ -80,13 +80,37 @@ public class SudokuExample implements ActionListener {
     }
 
     private void buttonsActive(boolean active) {
-        solveButton.setEnabled(active);
+        solveButton.setEnabled(false);
         stepButton.setEnabled(active);
         dumpButton.setEnabled(active);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
+    public void actionPerformed(ActionEvent ev) {
+        if (ev.getSource().equals(stepButton)) {
+            sudoku.step();
+            if (sudoku.isSolved() || sudoku.isUnsolvable()) buttonsActive(false);
+            if (sudoku.isUnsolvable()) {
+                sudoku.dumpGrid();
+                System.out.println("Sorry - can't solve this grid.");
+            }
+        }
+        if (ev.getSource().equals(dumpButton)) {
+            System.out.println(sudoku.dumpGrid());
+        }
+        if (ev.getSource().equals(exitMenuItem)) {
+            if (mainFrame.getDefaultCloseOperation() == WindowConstants.EXIT_ON_CLOSE) {
+                System.exit(0);
+            } else {
+                mainFrame.dispose();
+            }
+        }
+        if (ev.getSource() instanceof JMenuItem) {
+            JMenuItem menuItem = (JMenuItem) ev.getSource();
+            Integer[][] sample = SudokuGridSamples.getInstance().getSample(menuItem.getText());
+            sudoku.setCellValues(sample);
+//            sudoku.validate();
+            buttonsActive(true);
+        }
     }
 }

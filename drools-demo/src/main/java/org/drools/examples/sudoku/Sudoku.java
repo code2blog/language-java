@@ -164,5 +164,8 @@ public class Sudoku {
         return dumpGridSb.toString();
     }
 
+    public boolean isUnsolvable(){
+        return unsolvable;
+    }
 
 }
