@@ -36,7 +36,7 @@ public class SudokuTest {
         sudoku.setCellValues(sample);
         //sudoku.validate();
         String grid = "";
-        int maxAttempts = 300;
+        int maxAttempts = 3;
         while(maxAttempts-- > 0){
             logger.info("step()");
             sudoku.step();
