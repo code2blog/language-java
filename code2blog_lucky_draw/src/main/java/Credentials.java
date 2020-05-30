@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.Properties;
 
 public class Credentials {
@@ -8,7 +7,7 @@ public class Credentials {
 
     static {
         try {
-            File file = new File("credentials.properties");
+            File file = new File("src/main/resources/credentials.properties");
             if (!file.exists()) {
                 throw new IllegalStateException(String.format("could not find file at [%s]", file.getAbsolutePath()));
             }
@@ -21,6 +20,6 @@ public class Credentials {
     }
 
     public static String getYoutubeApiKey() {
-        properties.getProperty("DEVELOPER_KEY");
+        return properties.getProperty("DEVELOPER_KEY");
     }
 }

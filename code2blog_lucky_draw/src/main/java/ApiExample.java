@@ -18,9 +18,9 @@ import java.security.GeneralSecurityException;
 public class ApiExample {
     // You need to set this value for your code to compile.
     // For example: ... DEVELOPER_KEY = "YOUR ACTUAL KEY";
-    private static final String DEVELOPER_KEY = "YOUR_API_KEY";
+    private static final String DEVELOPER_KEY = Credentials.getYoutubeApiKey();
 
-    private static final String APPLICATION_NAME = "API code samples";
+    private static final String APPLICATION_NAME = "code2blog_lucky_draw";
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
     /**
@@ -32,8 +32,8 @@ public class ApiExample {
     public static YouTube getService() throws GeneralSecurityException, IOException {
         final NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         return new YouTube.Builder(httpTransport, JSON_FACTORY, null)
-            .setApplicationName(APPLICATION_NAME)
-            .build();
+                .setApplicationName(APPLICATION_NAME)
+                .build();
     }
 
     /**
@@ -43,12 +43,14 @@ public class ApiExample {
      * @throws GeneralSecurityException, IOException, GoogleJsonResponseException
      */
     public static void main(String[] args)
-        throws GeneralSecurityException, IOException, GoogleJsonResponseException {
+            throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
         YouTube.Comments.List request = youtubeService.comments()
-            .list("");
-        CommentListResponse response = request.setKey(DEVELOPER_KEY).execute();
+                .list("snippet");
+        CommentListResponse response = request.setKey(DEVELOPER_KEY)
+                .setParentId("UgzDE2tasfmrYLyNkGt4AaABAg")
+                .execute();
         System.out.println(response);
     }
 }
