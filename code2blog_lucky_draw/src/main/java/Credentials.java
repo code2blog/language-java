@@ -22,4 +22,8 @@ public class Credentials {
     public static String getYoutubeApiKey() {
         return properties.getProperty("DEVELOPER_KEY");
     }
+
+    public static String getApplicationName() {
+        return properties.getProperty("APPLICATION_NAME");
+    }
 }
