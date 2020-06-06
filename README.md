@@ -26,5 +26,6 @@ code2blog_lucky_draw
 code2blog_springboot_demo
 	sb-t1 print something to console
 	sb-t2 invoke spring bean method
+	sb-t3 call a parent bean method that has dependency on child bean
 	
 </pre>
