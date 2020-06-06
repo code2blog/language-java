@@ -73,8 +73,7 @@ public class ApiExampleCommentThreads {
 //        System.out.println(response);
         System.out.println(String.format("[%s] has been selected as the winner of lucky draw.\n" +
                         "You get 1 hour free training seesion on the topic that your select.\n" +
-                        "This is only a test run.\n" +
-                        "Actual winner will be announced when my channel hits 50 subscribers.",
+                        "Send your skype id to my email VISHNU31122013@gmail.com",
                 contestants.toArray()[new Random().nextInt(contestants.size())]));
     }
 }

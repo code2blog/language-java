@@ -22,5 +22,8 @@ mail2excel
 
 code2blog_lucky_draw
 	ld-t1 invoke comments api on youtube
+
+code2blog_springboot_demo
+	sb-t1 print something to console
 	
 </pre>

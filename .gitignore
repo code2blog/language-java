@@ -39,3 +39,4 @@ build.properties
 /code2blog_lucky_draw/src/main/resources/credentials.properties
 /code2blog_lucky_draw/target
 /code2blog_lucky_draw/src/main/resources/client_secret.json
+.mvn
