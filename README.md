@@ -28,4 +28,7 @@ code2blog_springboot_demo
 	sb-t2 invoke spring bean method
 	sb-t3 call a parent bean method that has dependency on child bean
 	
+code2blog_springboot_jpa
+	jpa-t1 use h2 and insert record to table
+
 </pre>
