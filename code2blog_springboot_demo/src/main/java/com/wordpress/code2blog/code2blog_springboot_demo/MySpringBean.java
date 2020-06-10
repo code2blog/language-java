@@ -10,9 +10,14 @@ import org.springframework.stereotype.Component;
 
 @Log4j2
 @Component
-@ConfigurationProperties(prefix = "myapp")
-@PropertySource(value = "classpath:application.properties")
+@ConfigurationProperties(prefix = "forspringbean")
+@PropertySource(value = "classpath:myCustom.properties")
 public class MySpringBean {
+
+    @Getter
+    @Setter
+    String contentType;
+
     @Getter
     @Setter
     private int id;
@@ -26,10 +31,6 @@ public class MySpringBean {
     @Setter
     MyChildBean child;
 
-    @Getter
-    @Setter
-    String environment;
-    
     public MySpringBean(){
         log.info("spring bean created");
     }
