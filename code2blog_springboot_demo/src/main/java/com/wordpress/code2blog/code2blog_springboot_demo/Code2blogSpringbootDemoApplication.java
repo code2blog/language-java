@@ -28,6 +28,6 @@ public class Code2blogSpringbootDemoApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         logger.info(String.format("Value annotation says i am in [%s] environment", environment));
-        logger.info(String.format("ConfigurationProperties annotation says i am in [%s] environment", myProps.getEnvironment()));
+        logger.info(String.format("ConfigurationProperties annotation says i am in [%s] version", myProps.getVersion()));
     }
 }
