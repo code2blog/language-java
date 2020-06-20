@@ -6,9 +6,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 
+@ToString
 @DynamoDBTable(tableName = "users")
 public class UserModel implements Serializable {
 
@@ -22,17 +24,12 @@ public class UserModel implements Serializable {
 
 	@Getter
 	@Setter
-	@DynamoDBAttribute
-	private String firstName;
+	@DynamoDBAttribute(attributeName = "Name")
+	private String name;
 
 	@Getter
 	@Setter
-	@DynamoDBAttribute
-	private String lastName;
-
-	@Getter
-	@Setter
-	@DynamoDBAttribute
+	@DynamoDBAttribute(attributeName = "Age")
 	private String age;
 
 }

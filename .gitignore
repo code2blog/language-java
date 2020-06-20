@@ -41,3 +41,4 @@ build.properties
 /code2blog_lucky_draw/src/main/resources/client_secret.json
 .mvn
 application.properties
+/code2blog_springboot_dynamodb/src/main/resources/application.yml

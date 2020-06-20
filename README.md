@@ -37,5 +37,7 @@ code2blog_springboot_jpa
 	
 code2blog_springboot_dynamodb
 	dd-t1 connect to aws dynamodb 
+	dd-t2 execute select and insert operations
+	dd-t3 execute delete operation
 
 </pre>
