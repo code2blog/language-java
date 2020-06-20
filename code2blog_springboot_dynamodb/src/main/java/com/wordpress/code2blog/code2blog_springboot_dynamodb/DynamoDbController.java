@@ -32,4 +32,12 @@ public class DynamoDbController {
 		log.info(message);
 		return message;
 	}
+
+	@DeleteMapping(value = "{userId}")
+	public void deleteUser(@PathVariable("userId") String userId) {
+		UserModel user = new UserModel();
+		user.setUserId(userId);
+		repository.getMapper().delete(user);
+		log.info(String.format("deleted user [%s]", userId));
+	}
 }
