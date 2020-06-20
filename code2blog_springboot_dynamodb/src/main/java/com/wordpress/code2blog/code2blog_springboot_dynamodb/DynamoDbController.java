@@ -40,4 +40,10 @@ public class DynamoDbController {
 		repository.getMapper().delete(user);
 		log.info(String.format("deleted user [%s]", userId));
 	}
+
+	@PutMapping
+	public void updateStudentDetails(@RequestBody UserModel user) {
+		repository.updateUser(user);
+	}
+
 }

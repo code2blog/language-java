@@ -39,5 +39,6 @@ code2blog_springboot_dynamodb
 	dd-t1 connect to aws dynamodb 
 	dd-t2 execute select and insert operations
 	dd-t3 execute delete operation
-
+	dd-t4 update record using http put method
+	
 </pre>
