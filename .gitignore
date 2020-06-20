@@ -40,5 +40,4 @@ build.properties
 /code2blog_lucky_draw/target
 /code2blog_lucky_draw/src/main/resources/client_secret.json
 .mvn
-/code2blog_springboot_jpa/src/main/resources/application.properties
-
+application.properties

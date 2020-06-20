@@ -35,4 +35,7 @@ code2blog_springboot_jpa
 	jpa-t1 use h2 and insert record to table
 	jpa-t2 use oracle database and insert records to table. Auto generate the table 
 	
+code2blog_springboot_dynamodb
+	dd-t1 connect to aws dynamodb 
+
 </pre>
