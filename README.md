@@ -22,6 +22,7 @@ mail2excel
 
 code2blog_lucky_draw
 	ld-t1 invoke comments api on youtube
+	ld-t2 populate a playlist with videos from a youtube channel - red gardens for example
 
 code2blog_springboot_demo
 	sb-t1 print something to console

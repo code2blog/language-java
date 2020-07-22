@@ -42,3 +42,4 @@ build.properties
 .mvn
 application.properties
 /code2blog_springboot_dynamodb/src/main/resources/application.yml
+/code2blog_lucky_draw/private
