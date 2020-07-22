@@ -1,5 +1,5 @@
 /**
- * Sample Java code for youtube.subscriptions.list
+ * Sample Java code for youtube.activities.list
  * See instructions for running these code samples locally:
  * https://developers.google.com/explorer-help/guides/code_samples#java
  */
@@ -16,7 +16,8 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.SubscriptionListResponse;
+import com.google.api.services.youtube.model.Activity;
+import com.google.api.services.youtube.model.ActivityListResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,8 +25,9 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.function.Consumer;
 
-public class ApiExampleMySubscriptions {
+public class ApiExampleListActivities {
     private static final String CLIENT_SECRETS= "client_secret.json";
     private static final Collection<String> SCOPES =
         Arrays.asList("https://www.googleapis.com/auth/youtube.readonly");
@@ -77,9 +79,17 @@ public class ApiExampleMySubscriptions {
         throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
         // Define and execute the API request
-        YouTube.Subscriptions.List request = youtubeService.subscriptions()
+        YouTube.Activities.List request = youtubeService.activities()
             .list("snippet,contentDetails");
-        SubscriptionListResponse response = request.setMine(true).execute();
-        System.out.println(response);
+        ActivityListResponse response = request.setChannelId("UCq9U-gJ1LtDCE4W5BhEDFSQ")
+            .setMaxResults(50L)
+            .execute();
+        response.getItems().forEach(new Consumer<Activity>() {
+            @Override
+            public void accept(Activity activity) {
+                System.out.println(String.format("https://youtu.be/%s %s", activity.getContentDetails().getUpload().getVideoId(), activity.getSnippet().getTitle()));
+            }
+        });
+//        System.out.println(response);
     }
 }

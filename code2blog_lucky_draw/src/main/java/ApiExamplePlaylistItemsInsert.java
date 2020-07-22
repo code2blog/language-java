@@ -32,7 +32,7 @@ public class ApiExamplePlaylistItemsInsert {
     private static final Collection<String> SCOPES =
         Arrays.asList("https://www.googleapis.com/auth/youtube.force-ssl");
 
-    private static final String APPLICATION_NAME = "code2blog";
+    private static final String APPLICATION_NAME = Credentials.getApplicationName();
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
 
     /**
