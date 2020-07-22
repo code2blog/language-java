@@ -16,8 +16,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.Activity;
-import com.google.api.services.youtube.model.ActivityListResponse;
+import com.google.api.services.youtube.model.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -85,11 +84,34 @@ public class ApiExampleListActivities {
             .setMaxResults(50L)
             .execute();
         response.getItems().forEach(new Consumer<Activity>() {
+            @lombok.SneakyThrows
             @Override
             public void accept(Activity activity) {
-                System.out.println(String.format("https://youtu.be/%s %s", activity.getContentDetails().getUpload().getVideoId(), activity.getSnippet().getTitle()));
+                String videoId = activity.getContentDetails().getUpload().getVideoId();
+                System.out.println(String.format("https://youtu.be/%s %s", videoId, activity.getSnippet().getTitle()));
+                addToPlaylist(videoId, youtubeService);
             }
         });
 //        System.out.println(response);
+    }
+
+    private static void addToPlaylist(String videoId, YouTube youtubeService) throws Exception {
+        // Define the PlaylistItem object, which will be uploaded as the request body.
+        PlaylistItem playlistItem = new PlaylistItem();
+
+        // Add the snippet object property to the PlaylistItem object.
+        PlaylistItemSnippet snippet = new PlaylistItemSnippet();
+        snippet.setPlaylistId("PL7ws7gPffavLAi9SosH1jvwZwzny_gfQ4");
+        snippet.setPosition(0L);
+        ResourceId resourceId = new ResourceId();
+        resourceId.setKind("youtube#video");
+        resourceId.setVideoId(videoId);
+        snippet.setResourceId(resourceId);
+        playlistItem.setSnippet(snippet);
+
+        // Define and execute the API request
+        YouTube.PlaylistItems.Insert request = youtubeService.playlistItems()
+                .insert("snippet", playlistItem);
+        PlaylistItem response = request.execute();
     }
 }
