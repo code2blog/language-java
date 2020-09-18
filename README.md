@@ -50,5 +50,8 @@ code2blog_jwt
 	
 code2blog_config_server
 	ccs-t1 use spring cloud config libraries to expose a central location where configurations can be accessed from
+
+code2blog_config_client
+	ccc-t1 use spring cloud config libraries to invoke config details from central repository
 	
 </pre>
