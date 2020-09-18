@@ -49,3 +49,4 @@ application.properties
 /code2blog_jwt/target/classes
 /code2blog_springboot_jpa/src/main/resources/application.properties
 /code2blog_springboot_dynamodb/src/main/resources/application.yml
+bootstrap.properties
