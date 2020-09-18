@@ -48,4 +48,7 @@ code2blog_merge_excel
 code2blog_jwt
 	jwt-t1 create a token in plain java
 	
+code2blog_config_server
+	ccs-t1 use spring cloud config libraries to expose a central location where configurations can be accessed from
+	
 </pre>
