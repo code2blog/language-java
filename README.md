@@ -53,5 +53,8 @@ code2blog_config_server
 
 code2blog_config_client
 	ccc-t1 use spring cloud config libraries to invoke config details from central repository
+
+code2blog_mousemove
+	mm-t1 keep the screen active by moving mouse
 	
 </pre>
