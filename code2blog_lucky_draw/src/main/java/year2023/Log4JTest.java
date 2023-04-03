@@ -11,5 +11,6 @@ public class Log4JTest {
     public static void main(String[] args) {
         logger.info("hello form java.util.logger");
         log.info("hello from log4j2 of lombok");
+        log.info("static value","dynamic value");//this does not print "dynamic value"
     }
 }
