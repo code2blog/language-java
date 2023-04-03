@@ -28,4 +28,8 @@ public class Credentials {
     public static String getApplicationName() {
         return properties.getProperty("APPLICATION_NAME");
     }
+
+    public static Properties getProperties(){
+        return properties;
+    }
 }
