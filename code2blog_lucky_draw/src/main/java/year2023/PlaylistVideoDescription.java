@@ -19,8 +19,8 @@ import java.util.List;
 @Log4j2
 public class PlaylistVideoDescription {
     final String API_KEY = Credentials.getYoutubeApiKey();
-    final String PLAYLIST_ID = "PL7ws7gPffavI-kQ21xIlLCjV2LNoqwjRI";
-    final boolean readOnly = true;
+    final String PLAYLIST_ID = "PL7ws7gPffavKlwxWX-JzccmdkQ7GUwKjB";
+    final boolean readOnly = false;
 
     private YouTube youtube;
 
@@ -56,35 +56,102 @@ public class PlaylistVideoDescription {
         PlaylistItemListResponse response = playlistItemsListByPlaylistIdRequest.execute();
         List<PlaylistItem> videos = response.getItems();
         for (PlaylistItem video : videos) {
-            processVideo(video);
+            processPlaylistItem(video);
         }
 
 
     }
 
-    private void processVideo(PlaylistItem video) {
-        PlaylistItemSnippet snippet = video.getSnippet();
+    private void processPlaylistItem(PlaylistItem playlistItem) throws Exception {
+        PlaylistItemSnippet snippet = playlistItem.getSnippet();
+        if(readOnly){
+            log.info(String.format("video description : [%s]", snippet.getDescription()));
+            return;
+        }
+        log.info(snippet);
 
-        log.info(String.format("video description : [%s]", snippet.getDescription()));
+        String videoId = playlistItem.getSnippet().getResourceId().getVideoId();
+        log.info(String.format("videoId=%s", videoId));
+        processVideoStatus(videoId);
+        processVideoSnippet(videoId);
     }
 
+    private void processVideoStatus(String videoId) throws Exception {
+        YouTube.Videos.List videoRequest = youtube.videos().list("status");
+        videoRequest.setId(videoId);
+        videoRequest.setKey(API_KEY);
+        VideoListResponse videoResponse = videoRequest.execute();
+
+        // Get the first video in the list
+        List<Video> videoList = videoResponse.getItems();
+        if (videoList.isEmpty()) {
+            log.info("Can't find a video with ID: " + videoId);
+            return;
+        }
+        Video video = videoList.get(0);
+        VideoStatus status = video.getStatus();
+
+        log.info(String.format("video status in json format : [%s]", status));
+        status.setPrivacyStatus("public");
+        video.setStatus(status);
+
+        // Update the video on the API
+        YouTube.Videos.Update updateRequest = youtube.videos().update("status", video);
+        updateRequest.setKey(API_KEY);
+        Video updatedVideo = updateRequest.execute();
+        //
+    }
+
+    private void processVideoSnippet(String videoId) throws Exception {
+        YouTube.Videos.List videoRequest = youtube.videos().list("snippet");
+        videoRequest.setId(videoId);
+        videoRequest.setKey(API_KEY);
+        VideoListResponse videoResponse = videoRequest.execute();
+
+        // Get the first video in the list
+        List<Video> videoList = videoResponse.getItems();
+        if (videoList.isEmpty()) {
+            log.info("Can't find a video with ID: " + videoId);
+            return;
+        }
+        Video video = videoList.get(0);
+
+        // Update the video description
+        VideoSnippet snippet = video.getSnippet();
+
+        log.info(String.format("video attributes in json format : [%s]", snippet));
+
+        String replcementDescription = replaceEmailInDescription(snippet.getDescription());
+        VideoSnippet videoSnippet = snippet.setDescription(replcementDescription);
+        video.setSnippet(snippet);
+
+        // Update the video on the API
+        YouTube.Videos.Update updateRequest = youtube.videos().update("snippet", video);
+        updateRequest.setKey(API_KEY);
+        Video updatedVideo = updateRequest.execute();
+        log.info(String.format("Updated description = [%s]", replcementDescription));
+    }
 
     public static void main(String[] args) throws Exception {
-        //new PlaylistVideoDescription().list();
-        PlaylistVideoDescription.replaceEmail();
+        new PlaylistVideoDescription().list();
+        //PlaylistVideoDescription.replaceEmail();
     }
 
     private static void replaceEmail() throws Exception {
         File fileInput = new File(Credentials.getProperties().getProperty("PLAYLIST_INPUT"));
-        File fileReplace = new File(Credentials.getProperties().getProperty("PLAYLIST_REPLACEMENT"));
         File fileOutput = new File(Credentials.getProperties().getProperty("PLAYLIST_OUTPUT"));
         String input = new String(Files.readAllBytes(Paths.get(fileInput.getAbsolutePath())));
-        String output = input;
+        String output = replaceEmailInDescription(input);
+        Files.write(Paths.get(fileOutput.getAbsolutePath()), output.getBytes());
+        System.out.println("done");
+    }
+
+    private static String replaceEmailInDescription(String output) throws IOException {
+        File fileReplace = new File(Credentials.getProperties().getProperty("PLAYLIST_REPLACEMENT"));
         List<String> lines = Files.readAllLines(Paths.get(fileReplace.getAbsolutePath()));
         for(String line : lines){
             output = output.replace(line, "");
         }
-        Files.write(Paths.get(fileOutput.getAbsolutePath()), output.getBytes());
-        System.out.println("done");
+        return output;
     }
 }

@@ -58,7 +58,8 @@ public class VideoAttributes {
             VideoSnippet snippet = video.getSnippet();
 
             log.info(String.format("video description : [%s]", snippet.getDescription()));
-            log.info(String.format("video attributes in json format : [%s]", snippet));
+            log.info(String.format("video snippet in json format : [%s]", snippet));
+            log.info(String.format("video attributes in json format : [%s]", video));
 
             snippet.setDescription("This is the updated description of the video.");
             video.setSnippet(snippet);
