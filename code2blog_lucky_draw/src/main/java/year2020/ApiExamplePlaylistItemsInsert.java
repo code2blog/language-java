@@ -1,5 +1,5 @@
-/**
- * Sample Java code for youtube.activities.list
+package year2020; /**
+ * Sample Java code for youtube.playlistItems.insert
  * See instructions for running these code samples locally:
  * https://developers.google.com/explorer-help/guides/code_samples#java
  */
@@ -16,7 +16,9 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.*;
+import com.google.api.services.youtube.model.PlaylistItem;
+import com.google.api.services.youtube.model.PlaylistItemSnippet;
+import com.google.api.services.youtube.model.ResourceId;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,12 +26,11 @@ import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.function.Consumer;
 
-public class ApiExampleListActivities {
+public class ApiExamplePlaylistItemsInsert {
     private static final String CLIENT_SECRETS= "client_secret.json";
     private static final Collection<String> SCOPES =
-            Arrays.asList("https://www.googleapis.com/auth/youtube.force-ssl");
+        Arrays.asList("https://www.googleapis.com/auth/youtube.force-ssl");
 
     private static final String APPLICATION_NAME = Credentials.getApplicationName();
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -77,41 +78,24 @@ public class ApiExampleListActivities {
     public static void main(String[] args)
         throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
-        // Define and execute the API request
-        YouTube.Activities.List request = youtubeService.activities()
-            .list("snippet,contentDetails");
-        ActivityListResponse response = request.setChannelId("UCq9U-gJ1LtDCE4W5BhEDFSQ")
-            .setMaxResults(50L)
-            .execute();
-        response.getItems().forEach(new Consumer<Activity>() {
-            @lombok.SneakyThrows
-            @Override
-            public void accept(Activity activity) {
-                String videoId = activity.getContentDetails().getUpload().getVideoId();
-                System.out.println(String.format("https://youtu.be/%s %s", videoId, activity.getSnippet().getTitle()));
-                addToPlaylist(videoId, youtubeService);
-            }
-        });
-//        System.out.println(response);
-    }
-
-    private static void addToPlaylist(String videoId, YouTube youtubeService) throws Exception {
+        
         // Define the PlaylistItem object, which will be uploaded as the request body.
         PlaylistItem playlistItem = new PlaylistItem();
-
+        
         // Add the snippet object property to the PlaylistItem object.
         PlaylistItemSnippet snippet = new PlaylistItemSnippet();
         snippet.setPlaylistId("PL7ws7gPffavLAi9SosH1jvwZwzny_gfQ4");
         snippet.setPosition(0L);
         ResourceId resourceId = new ResourceId();
         resourceId.setKind("youtube#video");
-        resourceId.setVideoId(videoId);
+        resourceId.setVideoId("M7FIvfx5J10");
         snippet.setResourceId(resourceId);
         playlistItem.setSnippet(snippet);
 
         // Define and execute the API request
         YouTube.PlaylistItems.Insert request = youtubeService.playlistItems()
-                .insert("snippet", playlistItem);
+            .insert("snippet", playlistItem);
         PlaylistItem response = request.execute();
+        System.out.println(response);
     }
 }

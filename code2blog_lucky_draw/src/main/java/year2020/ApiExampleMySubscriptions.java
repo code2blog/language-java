@@ -1,5 +1,5 @@
-/**
- * Sample Java code for youtube.playlistItems.insert
+package year2020; /**
+ * Sample Java code for youtube.subscriptions.list
  * See instructions for running these code samples locally:
  * https://developers.google.com/explorer-help/guides/code_samples#java
  */
@@ -16,9 +16,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
 import com.google.api.services.youtube.YouTube;
-import com.google.api.services.youtube.model.PlaylistItem;
-import com.google.api.services.youtube.model.PlaylistItemSnippet;
-import com.google.api.services.youtube.model.ResourceId;
+import com.google.api.services.youtube.model.SubscriptionListResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,10 +25,10 @@ import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class ApiExamplePlaylistItemsInsert {
+public class ApiExampleMySubscriptions {
     private static final String CLIENT_SECRETS= "client_secret.json";
     private static final Collection<String> SCOPES =
-        Arrays.asList("https://www.googleapis.com/auth/youtube.force-ssl");
+        Arrays.asList("https://www.googleapis.com/auth/youtube.readonly");
 
     private static final String APPLICATION_NAME = Credentials.getApplicationName();
     private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
@@ -78,24 +76,10 @@ public class ApiExamplePlaylistItemsInsert {
     public static void main(String[] args)
         throws GeneralSecurityException, IOException, GoogleJsonResponseException {
         YouTube youtubeService = getService();
-        
-        // Define the PlaylistItem object, which will be uploaded as the request body.
-        PlaylistItem playlistItem = new PlaylistItem();
-        
-        // Add the snippet object property to the PlaylistItem object.
-        PlaylistItemSnippet snippet = new PlaylistItemSnippet();
-        snippet.setPlaylistId("PL7ws7gPffavLAi9SosH1jvwZwzny_gfQ4");
-        snippet.setPosition(0L);
-        ResourceId resourceId = new ResourceId();
-        resourceId.setKind("youtube#video");
-        resourceId.setVideoId("M7FIvfx5J10");
-        snippet.setResourceId(resourceId);
-        playlistItem.setSnippet(snippet);
-
         // Define and execute the API request
-        YouTube.PlaylistItems.Insert request = youtubeService.playlistItems()
-            .insert("snippet", playlistItem);
-        PlaylistItem response = request.execute();
+        YouTube.Subscriptions.List request = youtubeService.subscriptions()
+            .list("snippet,contentDetails");
+        SubscriptionListResponse response = request.setMine(true).execute();
         System.out.println(response);
     }
 }

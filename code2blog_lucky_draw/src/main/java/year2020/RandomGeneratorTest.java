@@ -1,3 +1,5 @@
+package year2020;
+
 import org.junit.Test;
 
 import java.util.Random;
