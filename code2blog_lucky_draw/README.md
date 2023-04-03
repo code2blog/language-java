@@ -1,9 +1,11 @@
-<br>
-	Refer these links for more details on this project <br>
-		https://code2blog.wordpress.com/  <br>
-		https://youtube.com/results?search_query=code2blog <br>
-		
-<br>
+<pre>
+Refer these links for more details on this project
+    video: https://www.youtube.com/watch?v=KAhVCJL97zE&ab_channel=code2blog
+    channel: https://www.youtube.com/c/code2blog
+    
+outdated blog : https://code2blog.wordpress.com/ 
+</pre>
+
 <pre>
 
 code2blog_lucky_draw
