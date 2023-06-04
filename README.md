@@ -9,6 +9,7 @@ tictactoe
 	ttt-1 create a tictactoe game
 	ttt-2 print board on console
 	ttt-3 play game using cli
+	ttt-4 user interface
 
 jsp-hello-world
 	t-1 hello world has to be displayed on webpage using jsp
