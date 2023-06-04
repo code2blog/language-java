@@ -52,3 +52,4 @@ application.properties
 bootstrap.properties
 /code2blog_mousemove/target
 /tictactoe/*.iml
+target
