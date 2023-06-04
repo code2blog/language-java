@@ -7,6 +7,7 @@ Here are some of the projects in this repository
 
 tictactoe
 	ttt-1 create a tictactoe game
+	ttt-1 print board on console
 
 jsp-hello-world
 	t-1 hello world has to be displayed on webpage using jsp
