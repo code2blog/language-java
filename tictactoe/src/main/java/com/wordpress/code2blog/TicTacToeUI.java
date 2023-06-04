@@ -17,8 +17,10 @@ public class TicTacToeUI extends JFrame implements ActionListener {
         // Create the buttons
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                buttons[i][j] = new JButton();
-                buttons[i][j].addActionListener(this);
+                JButton jButton = new JButton();
+                jButton.addActionListener(this);
+                jButton.setFont(new Font("Courier New", Font.PLAIN, 50));
+                buttons[i][j] = jButton;
             }
         }
 
@@ -49,12 +51,12 @@ public class TicTacToeUI extends JFrame implements ActionListener {
 
         // Set the button's text to the current player's symbol
         button.setText(symbols[currentPlayer]);
-
+        
         // Check if the current player has won
         if (checkWinner()) {
             // Game over!
             gameOver = true;
-            JOptionPane.showMessageDialog(this, currentPlayer + " wins!");
+            JOptionPane.showMessageDialog(this, symbols[currentPlayer] + " wins!");
         } else {
             // Switch to the next player
             currentPlayer = (currentPlayer + 1) % 2;
