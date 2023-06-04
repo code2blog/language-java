@@ -5,6 +5,7 @@ import java.util.Date;
 public class TicTacToe {
 
     private char[][] board = new char[3][3];
+    private char winner = ' ';
 
     public TicTacToe(){
         setBoardValues(board);
@@ -43,6 +44,7 @@ public class TicTacToe {
         // check x axis of the board for wins
         for (int i = 0; i < board.length; i++) {
             if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != '-') {
+                winner = board[i][0];
                 return true;
             }
         }
@@ -50,17 +52,20 @@ public class TicTacToe {
         // check y axis of the board for wins
         for (int i = 0; i < board.length; i++) {
             if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != '-') {
+                winner = board[0][i];
                 return true;
             }
         }
 
         // check the top-to-bottom diagonal space of the board for wins
         if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != '-') {
+            winner = board[0][0];
             return true;
         }
 
         // check the bottom-to-top diagonal space of the board for wins
         if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != '-') {
+            winner = board[0][2];
             return true;
         }
 
@@ -78,20 +83,21 @@ public class TicTacToe {
 
         return true;
     }
-
+    
     public void playGame() {
-        // vishnu temporarily added [move] variable
-        int move = 0;
+        int move = -1;
         while (!checkWinner() && !isTie()) {
+            move += 1;
+            int row = move / 3;
+            int column = move % 3;
+
             drawBoard();
             char symbol = getPlayerInput();
-            board[move - 1][0] = symbol;
+            board[row][column] = symbol;
         }
 
-        // vishnu temporarily added [symbol] variable
-        char symbol = 'Y';
         if (checkWinner()) {
-            System.out.println("Player " + symbol + " wins!");
+            System.out.println("Player " + winner + " wins!");
         } else {
             System.out.println("Tie game!");
         }
@@ -101,5 +107,6 @@ public class TicTacToe {
         TicTacToe ttt = new TicTacToe();
         System.out.println(new Date());
         ttt.playGame();
+        ttt.drawBoard();
     }
 }
