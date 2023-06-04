@@ -51,3 +51,4 @@ application.properties
 /code2blog_springboot_dynamodb/src/main/resources/application.yml
 bootstrap.properties
 /code2blog_mousemove/target
+/tictactoe/*.iml

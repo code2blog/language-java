@@ -5,6 +5,9 @@ Refer https://code2blog.wordpress.com for documentation.
 <pre>
 Here are some of the projects in this repository
 
+tictactoe
+	ttt-1 create a tictactoe game
+
 jsp-hello-world
 	t-1 hello world has to be displayed on webpage using jsp
 
